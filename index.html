@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wander & Taste | Premium Food & Travel Blog</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="#" class="logo" onclick="showSection('home')">Wander & Taste</a>
+        <ul class="nav-links">
+            <li class="nav-link active" onclick="showSection('home')">Home</li>
+            <li class="nav-link" onclick="showSection('stories')">Stories</li>
+            <li class="nav-link" onclick="showSection('reviews')">Reviews</li>
+            <li class="nav-link" onclick="showSection('gallery')">Gallery</li>
+        </ul>
+        <button class="btn-upload" onclick="openModal()">
+            <i class="fa-solid fa-plus"></i> Share Experience
+        </button>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Home / Hero Section -->
+        <section id="home" class="active">
+            <div class="hero-content">
+                <h1>Discover the World,<br>One Bite at a Time.</h1>
+                <p>Curated guides to the best hidden gems, culinary delights, and unforgettable adventures across the globe.</p>
+                <div class="cta-group">
+                    <button class="btn btn-primary" onclick="showSection('stories')">Read Stories</button>
+                    <button class="btn btn-outline" onclick="showSection('reviews')">Find Restaurants</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stories (Blog) Section -->
+        <section id="stories" class="container">
+            <h2>Latest Stories</h2>
+            <div class="grid" id="stories-grid">
+                <!-- Blog cards injected via JS -->
+            </div>
+        </section>
+
+        <!-- Reviews Section -->
+        <section id="reviews" class="container">
+            <h2>Restaurant Reviews</h2>
+            <div class="grid" id="reviews-grid">
+                <!-- Review cards injected via JS -->
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="container">
+            <h2>Visual Memories</h2>
+            <div class="gallery-grid" id="gallery-grid">
+                <!-- Gallery items injected via JS -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Upload Modal -->
+    <div class="modal" id="upload-modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal()">&times;</button>
+            <h3>Share Your Experience</h3>
+            <form id="upload-form">
+                <div class="form-group">
+                    <label class="form-label">Type</label>
+                    <select class="form-select" id="post-type" onchange="toggleRatingField()">
+                        <option value="story">Travel Story</option>
+                        <option value="review">Restaurant Review</option>
+                        <option value="photo">Photo Only</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Title / Caption</label>
+                    <input type="text" class="form-input" id="post-title" required placeholder="Amazing Sunset in Bali...">
+                </div>
+
+                <div class="form-group" id="location-group">
+                    <label class="form-label">Location</label>
+                    <input type="text" class="form-input" id="post-location" placeholder="Bali, Indonesia">
+                </div>
+
+                <div class="form-group" id="rating-group" style="display: none;">
+                    <label class="form-label">Rating (1-5)</label>
+                    <input type="number" class="form-input" id="post-rating" min="1" max="5" step="0.5" value="5">
+                </div>
+
+                <div class="form-group" id="description-group">
+                    <label class="form-label">Description</label>
+                    <textarea class="form-textarea" id="post-desc" rows="3" placeholder="Tell us about it..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Photo</label>
+                    <input type="file" class="form-input" id="post-image" accept="image/*" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Post Content</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
